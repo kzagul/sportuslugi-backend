@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +19,13 @@ Route::get('/', function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/api', function () {
+    return ['Sport api'];
+});
+
+Route::get('/api/usluga', function () {
+    return ['Sport api'];
+});
+
+Route::get('/api/institutions', [Controller::class, 'institutions']);
