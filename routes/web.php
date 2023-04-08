@@ -29,3 +29,5 @@ Route::get('/api/usluga', function () {
 });
 
 Route::get('/api/institutions', [Controller::class, 'institutions']);
+
+Route::get('/api/users', [Controller::class, 'users']);
