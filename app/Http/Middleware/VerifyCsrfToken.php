@@ -16,6 +16,7 @@ class VerifyCsrfToken extends Middleware
 
     protected $except = [
         //
-        'http://localhost:8000/api/service'
+        'http://localhost:8000/api/service',
+        'http://localhost:8000/api/institution'
     ];
 }

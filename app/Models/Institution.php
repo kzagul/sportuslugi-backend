@@ -9,6 +9,8 @@ class Institution extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];  
+
     public function services() {
         return $this->belongsToMany(Service::class);
     }
