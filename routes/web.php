@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\InstitutionController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +30,12 @@ Route::get('/api/usluga', function () {
     return ['Sport api'];
 });
 
-Route::get('/api/institutions', [Controller::class, 'institutions']);
-
 Route::get('/api/users', [Controller::class, 'users']);
+
+// Institution
+Route::get('/api/institutions', [InstitutionController::class, 'institutions']);
+
+// Service
+Route::get('api/services', [ServiceController::class, 'getServices']);
+Route::get('api/service/{service_id}', [ServiceController::class, 'getService']);
+Route::post('api/service', [ServiceController::class, 'postService']);

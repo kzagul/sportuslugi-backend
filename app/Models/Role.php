@@ -5,13 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
+class Role extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];  
-
-    public function institutions() {
-        return $this->belongsToMany(Institution::class);
+    public function users() {
+        return $this->belongsToMany(User::class);
     }
 }
