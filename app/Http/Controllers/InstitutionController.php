@@ -29,6 +29,14 @@ class InstitutionController extends BaseController
          ], 200);
     }
 
+    public function getInstitutionByName($institution_name) {
+        $institution = Institution::where('name', $institution_name)->with('services')->get();
+         return response()->json([
+            'status' => 200,
+            'institution' => $institution
+         ], 200);
+    }
+
     public function postInstitution(Request $request) {
         $institution = Institution::create([
             'name' => $request->name
