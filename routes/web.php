@@ -43,6 +43,8 @@ Route::post('/api/institution', [InstitutionController::class, 'postInstitution'
 Route::get('api/services', [ServiceController::class, 'getServices']);
 Route::get('api/service/{service_id}', [ServiceController::class, 'getService']);
 Route::post('api/service', [ServiceController::class, 'postService']);
+Route::put('api/service/{service_id}', [ServiceController::class, 'putService']);
+Route::delete('api/service/{service_id}', [ServiceController::class, 'deleteService']);
 
 // Sport
 Route::get('/api/sports', [SportController::class, 'getSports']);

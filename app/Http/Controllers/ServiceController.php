@@ -48,4 +48,41 @@ class ServiceController extends BaseController
             ], 500);
         }
     }
+
+    public function putService(Request $request, $service_id) {
+        $service = Service::find($service_id);
+
+        if($service){
+            $service->update([
+                'name' => $request->name
+            ]);
+            return response()->json([
+                'status' => 200,
+                'message' => 'service updated',
+                'data' => $service
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'something went wrong',
+            ], 404);
+        }
+    }
+
+    public function deleteService($service_id) {
+        $service = Service::find($service_id);
+
+        if($service){
+            $service->delete();
+            return response()->json([
+                'status' => 200,
+                'message' => 'service deleted',
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'something went wrong',
+            ], 404);
+        }
+    }
 }
