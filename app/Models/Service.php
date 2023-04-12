@@ -14,4 +14,8 @@ class Service extends Model
     public function institutions() {
         return $this->belongsToMany(Institution::class);
     }
+
+    public function sports() {
+        return $this->belongsToMany(Sport::class);
+    }
 }

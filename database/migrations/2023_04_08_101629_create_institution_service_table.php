@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('institution_service', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('institution_id')->constrained();
-            $table->foreignId('service_id')->constrained();
+            // $table->foreignId('institution_id')->constrained();
+            $table->unsignedBigInteger('institution_id');
+            $table->foreign('institution_id')->references('id')->on('institutions')->onDelete('cascade');
+            // $table->foreignId('service_id')->constrained();
+            $table->unsignedBigInteger('service_id');
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
             $table->timestamps();
         });
     }

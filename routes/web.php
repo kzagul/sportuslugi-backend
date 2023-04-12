@@ -31,6 +31,7 @@ Route::get('/api/usluga', function () {
     return ['Sport api'];
 });
 
+// User
 Route::get('/api/users', [Controller::class, 'users']);
 
 // Institution
@@ -38,6 +39,8 @@ Route::get('/api/institutions', [InstitutionController::class, 'getInstitutions'
 Route::get('/api/institution/{institution_id}', [InstitutionController::class, 'getInstitution']);
 Route::get('/api/institution/{institution_name}', [InstitutionController::class, 'getInstitutionByName']);
 Route::post('/api/institution', [InstitutionController::class, 'postInstitution']);
+Route::put('api/institution/{institution_id}', [InstitutionController::class, 'putInstitution']);
+Route::delete('api/institution/{institution_id}', [InstitutionController::class, 'deleteInstitution']);
 
 // Service
 Route::get('api/services', [ServiceController::class, 'getServices']);
@@ -48,3 +51,7 @@ Route::delete('api/service/{service_id}', [ServiceController::class, 'deleteServ
 
 // Sport
 Route::get('/api/sports', [SportController::class, 'getSports']);
+Route::get('api/sport/{sport_id}', [SportController::class, 'getSport']);
+Route::post('api/sport', [SportController::class, 'postSport']);
+Route::put('api/sport/{sport_id}', [SportController::class, 'putSport']);
+Route::delete('api/sport/{sport_id}', [SportController::class, 'deleteSport']);
