@@ -36,8 +36,8 @@ Route::get('/api/users', [Controller::class, 'users']);
 
 // Institution
 Route::get('/api/institutions', [InstitutionController::class, 'getInstitutions']);
-Route::get('/api/institution/{institution_id}', [InstitutionController::class, 'getInstitution']);
-Route::get('/api/institution/{institution_name}', [InstitutionController::class, 'getInstitutionByName']);
+Route::get('/api/institution/id={institution_id}', [InstitutionController::class, 'getInstitution']);
+Route::get('/api/institution/name={institution_name}', [InstitutionController::class, 'getInstitutionByName']);
 Route::post('/api/institution', [InstitutionController::class, 'postInstitution']);
 Route::put('api/institution/{institution_id}', [InstitutionController::class, 'putInstitution']);
 Route::delete('api/institution/{institution_id}', [InstitutionController::class, 'deleteInstitution']);

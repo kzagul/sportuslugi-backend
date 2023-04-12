@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Api\CreateService;
 use App\Models\Institution;
 use App\Models\Role;
 use App\Models\Service;
@@ -9,22 +10,23 @@ use App\Models\User;
 use App\Models\Sport;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 
 class ServiceController extends BaseController
 {
-    public function getServices() {
+    public function getServices(): JsonResponse {
         $services = Service::with('institutions')
             ->with('sports')
             ->get();
          return response()->json([
             'status' => 200,
             'services' => $services
-         ], 200);
+         ], 200); 
     }
 
-    public function getService($service_id) {
+    public function getService($service_id): JsonResponse {
         $service = Service::where('id', $service_id)
             ->with('institutions')
             ->with('sports')
@@ -36,7 +38,7 @@ class ServiceController extends BaseController
          ], 200);
     }
 
-    public function postService(Request $request) {
+    public function postService(CreateService $request): JsonResponse {
         // working
         // $service = Service::create([
         //     'name' => $request->name
@@ -59,7 +61,8 @@ class ServiceController extends BaseController
         ]);
 
         $institutions = Institution::find(1);
-        $sports = Sport::find(1);
+        // $sports = Sport::find(1);
+        $sports = Sport::findMany([3, 4]);
         $service->institutions()->attach($institutions);
         $service->sports()->attach($sports);
         if($service) {
@@ -76,7 +79,7 @@ class ServiceController extends BaseController
         }
     }
 
-    public function putService(Request $request, $service_id) {
+    public function putService(Request $request, $service_id): JsonResponse {
         $service = Service::find($service_id);
 
         if($service){
@@ -96,7 +99,7 @@ class ServiceController extends BaseController
         }
     }
 
-    public function deleteService($service_id) {
+    public function deleteService($service_id): JsonResponse {
         $service = Service::find($service_id);
 
         if($service){

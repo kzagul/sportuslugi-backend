@@ -8,12 +8,13 @@ use App\Models\Service;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 
 class InstitutionController extends BaseController
 {
-    public function getInstitutions() {
+    public function getInstitutions(): JsonResponse {
         $institutions = Institution::with('services')->get();
          return response()->json([
             'status' => 200,
@@ -21,7 +22,7 @@ class InstitutionController extends BaseController
          ], 200);
     }
 
-    public function getInstitution($institution_id) {
+    public function getInstitution($institution_id):JsonResponse {
         $institution = Institution::where('id', $institution_id)->with('services')->get();
          return response()->json([
             'status' => 200,
@@ -29,7 +30,7 @@ class InstitutionController extends BaseController
          ], 200);
     }
 
-    public function getInstitutionByName($institution_name) {
+    public function getInstitutionByName($institution_name): JsonResponse {
         $institution = Institution::where('name', $institution_name)->with('services')->get();
          return response()->json([
             'status' => 200,
@@ -37,8 +38,7 @@ class InstitutionController extends BaseController
          ], 200);
     }
 
-    public function postInstitution(Request $request) {
-        // working
+    public function postInstitution(Request $request): JsonResponse {
         $institution = Institution::create([
             'name' => $request->name
         ]);
@@ -54,40 +54,9 @@ class InstitutionController extends BaseController
                 'message' => 'something went wrong',
             ], 500);
         }
-
-
-        
-        // $institution = new Institution;
-        // $institution->name = $request->input('name');
-        // // $institution = Institution::create([
-        // //     'name' => $request->name
-        // // ]);
-        // $institution->save();
-
-        // // $services = $request->input('services');
-        // $services = $request->get('services');
-        // // $institution->services()->attach($services);
-        // $institution->services()->sync($services);
-
-        // // $service = $institution->services()->create([
-        // //     'name' => 'My Service',
-        // // ]);
-
-        // if($institution) {
-        //     return response()->json([
-        //         'status' => 200, 
-        //         'message' => 'institution created',
-        //         'data' => $institution
-        //     ], 200);
-        // } else {
-        //     return response()->json([
-        //         'status' => 500,
-        //         'message' => 'something went wrong',
-        //     ], 500);
-        // }
     }
 
-    public function putInstitution(Request $request, $institution_id) {
+    public function putInstitution(Request $request, $institution_id): JsonResponse {
         $institution = Institution::find($institution_id);
 
         if($institution){
@@ -107,7 +76,7 @@ class InstitutionController extends BaseController
         }
     }
 
-    public function deleteInstitution($institution_id) {
+    public function deleteInstitution($institution_id): JsonResponse {
         $institution = Institution::find($institution_id);
 
         if($institution){

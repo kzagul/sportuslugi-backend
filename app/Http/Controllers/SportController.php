@@ -9,12 +9,13 @@ use App\Models\Sport;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 
 class SportController extends BaseController
 {
-    public function getSports() {
+    public function getSports(): JsonResponse {
         $sports = Sport::with('services')->get();
          return response()->json([
             'status' => 200,
@@ -22,7 +23,7 @@ class SportController extends BaseController
          ], 200);
     }
 
-    public function getSport($sport_id) {
+    public function getSport($sport_id): JsonResponse {
         $sport = Sport::where('id', $sport_id)->with('services')->get();
          return response()->json([
             'status' => 200,
@@ -30,7 +31,7 @@ class SportController extends BaseController
          ], 200);
     }
 
-    public function postSport(Request $request) {
+    public function postSport(Request $request): JsonResponse {
         $sport = Sport::create([
             'name' => $request->name
         ]);
@@ -48,7 +49,7 @@ class SportController extends BaseController
         }
     }
 
-    public function putSport(Request $request, $sport_id) {
+    public function putSport(Request $request, $sport_id): JsonResponse {
         $sport = Sport::find($sport_id);
 
         if($sport){
@@ -68,7 +69,7 @@ class SportController extends BaseController
         }
     }
 
-    public function deleteSport($sport_id) {
+    public function deleteSport($sport_id): JsonResponse {
         $sport = Sport::find($sport_id);
 
         if($sport){
