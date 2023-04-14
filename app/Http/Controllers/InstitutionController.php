@@ -15,7 +15,9 @@ use Illuminate\Http\Request;
 class InstitutionController extends BaseController
 {
     public function getInstitutions(): JsonResponse {
-        $institutions = Institution::with('services')->get();
+        $institutions = Institution::with('services')
+            ->with('sports')
+            ->get();
          return response()->json([
             'status' => 200,
             'institutions' => $institutions

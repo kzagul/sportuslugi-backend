@@ -19,12 +19,12 @@ class Controller extends BaseController
          return response()->json([
              'users' => $users
          ], 200);
+    }
 
-        // $roles = Role::all();
-        //   return response()->json([
-        //      'roles' => $roles
-        //  ], 200);
-        // $users = User::all();
-        //  return $users;
+    public function roles() {
+        $roles = Role::with('users')->get();
+         return response()->json([
+             'roles' => $roles
+         ], 200);
     }
 }

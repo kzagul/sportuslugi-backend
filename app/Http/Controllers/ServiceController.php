@@ -61,9 +61,17 @@ class ServiceController extends BaseController
         ]);
 
         $institutions = Institution::find(1);
-        // $sports = Sport::find(1);
-        $sports = Sport::findMany([3, 4]);
-        $service->institutions()->attach($institutions);
+        // $array_sports = $request->input('sports');
+        // foreach ($array_sports as $array_sport) {
+        //     $sport = new Sport();
+        //     $sport->name = $array_sport['name'];
+        //     $sport->save();
+        //     $service->sports()->attach($sport);
+        // }
+        // $service->institutions()->attach($institutions);
+
+        $sports = Sport::find(1);
+        // $sports = Sport::findMany([1, 2]);
         $service->sports()->attach($sports);
         if($service) {
             return response()->json([

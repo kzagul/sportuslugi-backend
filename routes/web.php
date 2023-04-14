@@ -34,6 +34,9 @@ Route::get('/api/usluga', function () {
 // User
 Route::get('/api/users', [Controller::class, 'users']);
 
+// Role
+Route::get('/api/roles', [Controller::class, 'roles']);
+
 // Institution
 Route::get('/api/institutions', [InstitutionController::class, 'getInstitutions']);
 Route::get('/api/institution/id={institution_id}', [InstitutionController::class, 'getInstitution']);

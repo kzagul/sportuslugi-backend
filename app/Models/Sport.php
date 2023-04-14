@@ -11,6 +11,10 @@ class Sport extends Model
 
     protected $guarded = [];  
 
+    public function institutions() {
+        return $this->belongsToMany(Institution::class);
+    }
+    
     public function services() {
         return $this->belongsToMany(Service::class);
     }

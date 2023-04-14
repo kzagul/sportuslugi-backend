@@ -5,14 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserRole extends Model
+class InstitutionSport extends Model
 {
     use HasFactory;
 
-    protected $table = 'role_user';
-
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
-    }
+    protected $table = 'institution_sport';
 }
