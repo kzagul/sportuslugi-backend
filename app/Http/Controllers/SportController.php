@@ -16,7 +16,9 @@ use Illuminate\Http\Request;
 class SportController extends BaseController
 {
     public function getSports(): JsonResponse {
-        $sports = Sport::with('services')->get();
+        $sports = Sport::with('services')
+            ->with('institutions')
+            ->get();
          return response()->json([
             'status' => 200,
             'sports' => $sports
@@ -24,10 +26,13 @@ class SportController extends BaseController
     }
 
     public function getSport($sport_id): JsonResponse {
-        $sport = Sport::where('id', $sport_id)->with('services')->get();
+        $sport = Sport::where('id', $sport_id)
+            ->with('services')
+            ->with('institutions')
+            ->get();
          return response()->json([
             'status' => 200,
-            'sports' => $sport
+            'sport' => $sport[0]
          ], 200);
     }
 

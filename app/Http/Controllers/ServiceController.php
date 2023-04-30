@@ -34,7 +34,7 @@ class ServiceController extends BaseController
         // ->with('institutions')->get();
          return response()->json([
             'status' => 200,
-            'service' => $service
+            'service' => $service[0]
          ], 200);
     }
 
