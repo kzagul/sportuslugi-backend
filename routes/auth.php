@@ -16,6 +16,10 @@ Route::post('/register-new-user', [RegisteredUserController::class, 'newUser'])
                 // ->middleware('guest')
                 ->name('register');
 
+Route::post('/register-new-organization', [RegisteredUserController::class, 'newOrganization'])
+                ->middleware('guest')
+                ->name('register');
+
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])
                 ->middleware('guest')
                 ->name('login');

@@ -18,6 +18,7 @@ class VerifyCsrfToken extends Middleware
         //
         'http://localhost:8000/api/*',
         'http://localhost:3000/*',
+        'http://192.168.0.103:3000/*'
         // 'http://localhost:8000/api/service',
         // 'http://localhost:8000/api/service/*',
         // 'http://localhost:8000/api/institution',
