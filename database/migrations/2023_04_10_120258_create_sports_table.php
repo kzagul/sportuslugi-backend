@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('sports', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
+            // 
+            $table->string('type')->nullable();
+            $table->string('popularity')->nullable();
+            // 
             $table->timestamps();
         });
     }

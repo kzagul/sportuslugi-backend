@@ -13,7 +13,20 @@ return new class extends Migration
     {
         Schema::create('institutions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
+            $table->string('literal')->unique()->nullable();
+            $table->string('inn')->unique()->nullable();
+            $table->string('email')->unique()->nullable();
+            $table->string('contactuser')->unique()->nullable();
+            // 
+            $table->string('description')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('website')->nullable();
+            $table->string('workingTime')->nullable();
+            // 
+            $table->string('address')->nullable();
+            $table->string('coordinates')->nullable();
+
             $table->timestamps();
         });
     }
