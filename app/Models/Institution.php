@@ -18,4 +18,8 @@ class Institution extends Model
     public function sports() {
         return $this->belongsToMany(Sport::class);
     }
+
+    public function contactUsers() {
+        return $this->belongsToMany(User::class);
+    }
 }

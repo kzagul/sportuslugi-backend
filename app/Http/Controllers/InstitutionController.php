@@ -17,6 +17,8 @@ class InstitutionController extends BaseController
     public function getInstitutions(): JsonResponse {
         $institutions = Institution::with('services')
             ->with('sports')
+            // ->users
+            ->with('contactUsers')
             ->get();
          return response()->json([
             'status' => 200,
@@ -44,6 +46,12 @@ class InstitutionController extends BaseController
         $institution = Institution::create([
             'name' => $request->name
         ]);
+
+        // if($request->contactUsers){
+        //     $contactUsers_request = $request->contactUsers;
+        //     $contactUsers = User::find($contactUsers_request);
+        // }
+        
         if($institution) {
             return response()->json([
                 'status' => 200,
@@ -60,6 +68,14 @@ class InstitutionController extends BaseController
 
     public function putInstitution(Request $request, $institution_id): JsonResponse {
         $institution = Institution::find($institution_id);
+
+        // if($request->contactUsers){
+            
+        // $contactUsers_request = $request->contact_users;
+        // $contactUsers = User::find($contactUsers_request);
+        // $contactUsers = User::where("email", $contactUsers_request->email);
+        // $institution->contactUsers()->attach($contactUsers);
+        // }
 
         if($institution){
             $institution->update([
