@@ -27,4 +27,11 @@ class Controller extends BaseController
              'roles' => $roles
          ], 200);
     }
+
+    public function services() {
+        $roles = User::with('services')->get();
+         return response()->json([
+             'services' => $roles
+         ], 200);
+    }
 }

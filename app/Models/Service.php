@@ -19,4 +19,8 @@ class Service extends Model
     public function sports() {
         return $this->belongsToMany(Sport::class);
     }
+
+    public function users() {
+        return $this->belongsToMany(User::class);
+    }
 }

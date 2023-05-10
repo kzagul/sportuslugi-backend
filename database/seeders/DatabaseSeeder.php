@@ -15,6 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(1)->create();
 
+
+        // \App\Models\Sport::factory(1)->create();
+        
+       
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
@@ -52,5 +56,27 @@ class DatabaseSeeder extends Seeder
             'user_id' => 1,
             'role_id' => 1
         ]);
+
+       
+        // Sports
+        \App\Models\Sport::create([
+            'name' => "Футбол",
+        ]);
+        \App\Models\Sport::create([
+            'name' => "Воллейбол",
+        ]);
+
+        \App\Models\Sport::create([
+            'name' => "Йога",
+        ]);
+
+        \App\Models\Sport::create([
+            'name' => "Плавание",
+        ]);
+
+        \App\Models\Sport::create([
+            'name' => "Фитнес",
+        ]);
+
     }
 }
