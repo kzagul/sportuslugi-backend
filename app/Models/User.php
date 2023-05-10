@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_moderator',
+        'verified_moderator',
+        'moderator_of'
     ];
 
     /**

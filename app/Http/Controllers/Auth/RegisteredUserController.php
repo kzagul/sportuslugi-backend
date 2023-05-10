@@ -31,6 +31,9 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'is_moderator' => false,
+            'verified_moderator' => false,
+            'moderator_of' => null,
         ]);
 
         event(new Registered($user));
@@ -52,6 +55,9 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'is_moderator' => false,
+            'verified_moderator' => false,
+            'moderator_of' => null,
         ]);
 
         event(new Registered($user));
@@ -71,6 +77,9 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'is_moderator' => $request->is_moderator,
+            'verified_moderator' => false,
+            'moderator_of' => $request->moderator_of,
         ]);
 
         $role = Role::find(3);
