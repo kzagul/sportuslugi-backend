@@ -59,24 +59,24 @@ class DatabaseSeeder extends Seeder
 
        
         // Sports
-        \App\Models\Sport::create([
-            'name' => "Футбол",
-        ]);
-        \App\Models\Sport::create([
-            'name' => "Воллейбол",
-        ]);
+        // \App\Models\Sport::create([
+        //     'name' => "Футбол",
+        // ]);
+        // \App\Models\Sport::create([
+        //     'name' => "Воллейбол",
+        // ]);
 
-        \App\Models\Sport::create([
-            'name' => "Йога",
-        ]);
+        // \App\Models\Sport::create([
+        //     'name' => "Йога",
+        // ]);
 
-        \App\Models\Sport::create([
-            'name' => "Плавание",
-        ]);
+        // \App\Models\Sport::create([
+        //     'name' => "Плавание",
+        // ]);
 
-        \App\Models\Sport::create([
-            'name' => "Фитнес",
-        ]);
+        // \App\Models\Sport::create([
+        //     'name' => "Фитнес",
+        // ]);
 
     }
 }

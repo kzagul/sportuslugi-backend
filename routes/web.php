@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\InstitutionController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SportController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,13 +33,16 @@ Route::get('/api/usluga', function () {
 });
 
 // User
-Route::get('/api/users', [Controller::class, 'users']);
+Route::get('/api/users', [UserController::class, 'users']);
+Route::get('/api/user/{user_id}', [UserController::class, 'user']);
+Route::put('/api/user/{user_id}', [UserController::class, 'putUser']);
 
 // Role
-Route::get('/api/roles', [Controller::class, 'roles']);
+Route::get('/api/roles', [UserController::class, 'roles']);
 
 // User services
-Route::get('/api/users/services',  [Controller::class, 'services']);
+Route::get('/api/users/services',  [UserController::class, 'services']);
+Route::get('/api/user/{user_id}/services',  [UserController::class, 'service']);
 
 // Institution
 Route::get('/api/institutions', [InstitutionController::class, 'getInstitutions']);
