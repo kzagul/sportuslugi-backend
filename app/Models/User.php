@@ -23,7 +23,8 @@ class User extends Authenticatable
         'password',
         'is_moderator',
         'verified_moderator',
-        'moderator_of'
+        'moderator_of',
+        'image'
     ];
 
     /**

@@ -22,6 +22,7 @@ class UserFactory extends Factory
             'name' => 'Администратор',
             // 'email' => fake()->unique()->safeEmail(),
             'email' => 'sportuslugi.tech@ya.ru',
+            'image' => 'https://img.freepik.com/free-photo/portrait-of-handsome-young-man-closeup_176420-15568.jpg',
             'is_moderator' => false,
             'verified_moderator' => false,
             'moderator_of' => null,

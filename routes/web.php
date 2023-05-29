@@ -36,6 +36,7 @@ Route::get('/api/usluga', function () {
 Route::get('/api/users', [UserController::class, 'users']);
 Route::get('/api/user/{user_id}', [UserController::class, 'user']);
 Route::put('/api/user/{user_id}', [UserController::class, 'putUser']);
+Route::put('/api/userImage/{user_id}', [UserController::class, 'putUserImage']);
 
 // Role
 Route::get('/api/roles', [UserController::class, 'roles']);
