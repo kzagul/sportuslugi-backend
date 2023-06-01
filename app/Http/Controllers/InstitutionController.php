@@ -27,7 +27,11 @@ class InstitutionController extends BaseController
     }
 
     public function getInstitution($institution_id):JsonResponse {
-        $institution = Institution::where('id', $institution_id)->with('services')->get();
+        $institution = Institution::where('id', $institution_id)
+            ->with('services')
+            ->with('sports')
+            ->with('contactUsers')
+            ->get();
          return response()->json([
             'status' => 200,
             'institution' => $institution
