@@ -13,6 +13,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class ServiceController extends BaseController
 {
@@ -37,6 +38,22 @@ class ServiceController extends BaseController
             'service' => $service[0]
          ], 200);
     }
+
+    public function filterServices(): JsonResponse {
+        $services = QueryBuilder::for(Service::class)
+        ->allowedFilters(['name', 'type', 'isFree', 'price', 'sports.id', 'sports.name'])
+        ->with('institutions')
+        ->with('sports')
+        ->get();
+        return response()->json([
+            'status' => 200,
+            'services' => $services
+         ], 200);
+    }
+
+
+
+
 
     public function postService(CreateService $request): JsonResponse {
         // working

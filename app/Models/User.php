@@ -55,7 +55,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Service::class);
     }
 
-    public function institution() {
+    public function contactUserOf() {
         return $this->belongsToMany(Institution::class);
     }
 }

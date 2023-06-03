@@ -12,7 +12,9 @@ use Illuminate\Http\JsonResponse;
 class UserController extends Controller
 {
     public function users(): JsonResponse {
-        $users = User::with('roles')->get();
+        $users = User::with('roles')
+        ->with('contactUserOf')
+        ->get();
          return response()->json([
              'users' => $users
          ], 200);

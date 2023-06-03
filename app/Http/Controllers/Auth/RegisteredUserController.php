@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Institution;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -81,6 +82,14 @@ class RegisteredUserController extends Controller
             'verified_moderator' => false,
             'moderator_of' => $request->moderator_of,
         ]);
+
+        $contact_user_of_request = $request->contact_user_of;
+        // $institution = Institution::find($contact_user_of_request);
+        $institution = Institution::where('name', $contact_user_of_request);
+
+        $institution->contactUsers()->attach($user);
+
+        $user->contactUserOf()->attach($institution);
 
         $role = Role::find(3);
 

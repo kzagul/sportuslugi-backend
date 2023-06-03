@@ -73,13 +73,44 @@ class InstitutionController extends BaseController
     public function putInstitution(Request $request, $institution_id): JsonResponse {
         $institution = Institution::find($institution_id);
 
-        // if($request->contactUsers){
-            
-        // $contactUsers_request = $request->contact_users;
-        // $contactUsers = User::find($contactUsers_request);
-        // $contactUsers = User::where("email", $contactUsers_request->email);
-        // $institution->contactUsers()->attach($contactUsers);
-        // }
+        if($request->contact_users){
+            $contactUsers_request = $request->contact_users;
+            $contactUsers = User::find($contactUsers_request);
+            // findMany
+            // $contactUsers = User::where("email", $contactUsers_request->email);
+            $institution->contactUsers()->attach($contactUsers);
+        }
+
+        // $institutions_request = $request->institutions;
+        // $institutions = Institution::find($institutions_request);
+        // $service->institutions()->attach($institutions);
+
+        if($institution){
+            // $institution->update([
+            //     'name' => $request->name
+            // ]);
+            return response()->json([
+                'status' => 200,
+                'message' => 'institution updated',
+                'data' => $institution
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'something went wrong',
+            ], 404);
+        }
+    }
+
+    public function putContactUser(Request $request, $institution_id): JsonResponse {
+        $institution = Institution::find($institution_id);
+
+        if($request->contactUser){
+            $contact_users_request = $request->contactUser;
+            $contactUsers = User::find($contact_users_request);
+            // $contactUsers = User::where("email", $contactUsers_request->email);
+            $institution->contactUsers()->attach($contactUsers);
+        }
 
         if($institution){
             $institution->update([

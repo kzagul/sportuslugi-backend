@@ -5,7 +5,9 @@ use App\Http\Controllers\InstitutionController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SportController;
 use App\Http\Controllers\UserController;
+use App\Models\Service;
 use Illuminate\Support\Facades\Route;
+use Spatie\QueryBuilder\QueryBuilder;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,7 +56,9 @@ Route::put('api/institution/{institution_id}', [InstitutionController::class, 'p
 Route::delete('api/institution/{institution_id}', [InstitutionController::class, 'deleteInstitution']);
 
 // Service
-Route::get('api/services', [ServiceController::class, 'getServices']);
+// Route::get('api/services', [ServiceController::class, 'getServices']);
+Route::get('api/services', [ServiceController::class, 'filterServices']);
+// Route::get('api/services/filters', [ServiceController::class, 'filterServices']);
 Route::get('api/service/id={service_id}', [ServiceController::class, 'getService']);
 Route::post('api/service', [ServiceController::class, 'postService']);
 Route::put('api/service/{service_id}', [ServiceController::class, 'putService']);
