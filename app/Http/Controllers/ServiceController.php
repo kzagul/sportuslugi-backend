@@ -74,7 +74,11 @@ class ServiceController extends BaseController
         // }
 
         $service = Service::create([
-            'name' => $request->name
+            'name' => $request->name,
+            'isFree' => $request->isFree,
+            'price' => $request->price,
+            'description' => $request->description,
+            'duration' => $request->duration,
         ]);
 
         $institutions_request = $request->institutions;
