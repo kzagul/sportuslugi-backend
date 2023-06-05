@@ -18,6 +18,7 @@ class InstitutionController extends BaseController
         $institutions = Institution::with('services')
             ->with('sports')
             // ->users
+            ->with('comments')
             ->with('contactUsers')
             ->get();
          return response()->json([

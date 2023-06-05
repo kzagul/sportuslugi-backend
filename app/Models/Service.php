@@ -23,4 +23,8 @@ class Service extends Model
     public function users() {
         return $this->belongsToMany(User::class);
     }
+
+    public function comments() {
+        return $this->belongsToMany(Comment::class);
+    }
 }

@@ -20,6 +20,7 @@ class ServiceController extends BaseController
     public function getServices(): JsonResponse {
         $services = Service::with('institutions')
             ->with('sports')
+            ->with('comments')
             ->get();
          return response()->json([
             'status' => 200,

@@ -22,4 +22,8 @@ class Institution extends Model
     public function contactUsers() {
         return $this->belongsToMany(User::class);
     }
+
+    public function comments() {
+        return $this->belongsToMany(Comment::class);
+    }
 }
