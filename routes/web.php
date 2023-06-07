@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\InstitutionController;
+use App\Http\Controllers\VisitController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SportController;
 use App\Http\Controllers\UserController;
@@ -81,3 +82,9 @@ Route::get('/api/comments', [CommentController::class, 'getComments']);
 Route::get('send-mail-demo', [MailController::class, 'index']);
 Route::get('send-mail-service', [MailController::class, 'serviceRequest']);
 Route::get('send-mail-institution', [MailController::class, 'institutionMessage']);
+
+
+// Statistics
+Route::get('/api/institution/visits/{institution_id}', [VisitController::class, 'institutionCountVisits']);
+Route::get('/api/service/visits/{service_is}', [VisitController::class, 'serviceCountVisits']);
+

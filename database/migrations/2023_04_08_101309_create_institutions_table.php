@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('website')->nullable();
             $table->string('workingTime')->nullable();
-            $table->integer('view_count')->default(0);
             // 
             $table->string('address')->nullable();
             $table->string('coordinates')->nullable();
