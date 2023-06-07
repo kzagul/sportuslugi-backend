@@ -6,6 +6,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SportController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\MailController;
 use App\Models\Service;
 use Illuminate\Support\Facades\Route;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -75,3 +76,8 @@ Route::delete('api/sport/{sport_id}', [SportController::class, 'deleteSport']);
 
 // Comments
 Route::get('/api/comments', [CommentController::class, 'getComments']);
+
+// Mails
+Route::get('send-mail-demo', [MailController::class, 'index']);
+Route::get('send-mail-service', [MailController::class, 'serviceRequest']);
+Route::get('send-mail-institution', [MailController::class, 'institutionMessage']);
