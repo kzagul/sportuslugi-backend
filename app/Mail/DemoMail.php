@@ -30,6 +30,7 @@ class DemoMail extends Mailable
     {
         return new Envelope(
             subject: 'Demo Mail',
+            // 'Спортуслуги | Подтверждение представителя учреждения'
         );
     }
   

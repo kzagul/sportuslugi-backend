@@ -14,6 +14,7 @@ class UserController extends Controller
     public function users(): JsonResponse {
         $users = User::with('roles')
         ->with('contactUserOf')
+        ->with('favoriteServices')
         ->get();
          return response()->json([
              'users' => $users
@@ -34,6 +35,12 @@ class UserController extends Controller
             $user->update([
                 'name' => $request->name,
                 'verified_moderator' => $request->verified_moderator,
+
+                'image' => $request->image,
+                'last_name' => $request->last_name,
+                'father_name' => $request->father_name,
+                'gender' => $request->gender,
+                'birth_date' => $request->birth_date,
             ]);
             return response()->json([
                 'status' => 200,

@@ -83,6 +83,10 @@ class RegisteredUserController extends Controller
             'moderator_of' => $request->moderator_of,
         ]);
 
+        $role = Role::find(3);
+
+        $user->roles()->attach($role);
+
         $contact_user_of_request = $request->contact_user_of;
         // $institution = Institution::find($contact_user_of_request);
         $institution = Institution::where('name', $contact_user_of_request);
@@ -90,10 +94,6 @@ class RegisteredUserController extends Controller
         $institution->contactUsers()->attach($user);
 
         $user->contactUserOf()->attach($institution);
-
-        $role = Role::find(3);
-
-        $user->roles()->attach($role);
 
         event(new Registered($user));
 

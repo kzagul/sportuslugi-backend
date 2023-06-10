@@ -24,7 +24,12 @@ class User extends Authenticatable
         'is_moderator',
         'verified_moderator',
         'moderator_of',
-        'image'
+        'image',
+        'last_name',
+        'father_name',
+        'gender',
+        'last_name',
+        'birth_date'
     ];
 
     /**
@@ -51,7 +56,7 @@ class User extends Authenticatable
         // return $this->hasMany(Role::class);
     }
 
-    public function services() {
+    public function favoriteServices() {
         return $this->belongsToMany(Service::class);
     }
 

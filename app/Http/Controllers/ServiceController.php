@@ -115,6 +115,14 @@ class ServiceController extends BaseController
         }
     }
 
+
+    public function addFavoriteService(CreateService $request): JsonResponse {
+        return response()->json([
+            'status' => 500,
+            'message' => 'something went wrong',
+        ], 500);
+    }
+
     public function putService(Request $request, $service_id): JsonResponse {
         $service = Service::find($service_id);
 

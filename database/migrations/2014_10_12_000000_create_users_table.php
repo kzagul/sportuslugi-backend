@@ -16,6 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('image')->nullable();
+
+            $table->string('last_name')->nullable();
+            $table->string('father_name')->nullable();
+            $table->string('gender')->nullable();
+            $table->date('birth_date')->nullable();
+
             $table->boolean('is_moderator');
             $table->boolean('verified_moderator');
             $table->string('moderator_of')->nullable();

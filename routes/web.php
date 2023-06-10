@@ -37,18 +37,22 @@ Route::get('/api/usluga', function () {
     return ['Sport api'];
 });
 
+
 // User
 Route::get('/api/users', [UserController::class, 'users']);
 Route::get('/api/user/{user_id}', [UserController::class, 'user']);
 Route::put('/api/user/{user_id}', [UserController::class, 'putUser']);
 Route::put('/api/userImage/{user_id}', [UserController::class, 'putUserImage']);
 
+
 // Role
 Route::get('/api/roles', [UserController::class, 'roles']);
+
 
 // User services
 Route::get('/api/users/services',  [UserController::class, 'services']);
 Route::get('/api/user/{user_id}/services',  [UserController::class, 'service']);
+
 
 // Institution
 Route::get('/api/institutions', [InstitutionController::class, 'getInstitutions']);
@@ -57,6 +61,7 @@ Route::get('/api/institution/name={institution_name}', [InstitutionController::c
 Route::post('/api/institution', [InstitutionController::class, 'postInstitution']);
 Route::put('api/institution/{institution_id}', [InstitutionController::class, 'putInstitution']);
 Route::delete('api/institution/{institution_id}', [InstitutionController::class, 'deleteInstitution']);
+
 
 // Service
 Route::get('api/services', [ServiceController::class, 'getServices']);
@@ -67,6 +72,7 @@ Route::post('api/service', [ServiceController::class, 'postService']);
 Route::put('api/service/{service_id}', [ServiceController::class, 'putService']);
 Route::delete('api/service/{service_id}', [ServiceController::class, 'deleteService']);
 
+
 // Sport
 Route::get('/api/sports', [SportController::class, 'getSports']);
 // Route::get('api/sport/{sport_id}', [SportController::class, 'getSport']);
@@ -75,13 +81,26 @@ Route::post('api/sport', [SportController::class, 'postSport']);
 Route::put('api/sport/{sport_id}', [SportController::class, 'putSport']);
 Route::delete('api/sport/{sport_id}', [SportController::class, 'deleteSport']);
 
+
 // Comments
 Route::get('/api/comments', [CommentController::class, 'getComments']);
 
-// Mails
-Route::get('send-mail-demo', [MailController::class, 'index']);
-Route::get('send-mail-service', [MailController::class, 'serviceRequest']);
-Route::get('send-mail-institution', [MailController::class, 'institutionMessage']);
+
+// MAILS
+Route::get('/send-mail-demo', [MailController::class, 'demoMail']);
+
+Route::get('/send-mail-moderator-verification-wait', [MailController::class, 'moderatorVerificationWaitMail']);
+Route::get('/send-mail-moderator-verification', [MailController::class, 'moderatorVerificationMail']);
+
+Route::get('/send-mail-message-institution', [MailController::class, 'institutionMessageMail']);
+Route::get('/send-mail-message-answer-institution', [MailController::class, 'institutionMessageMail']);
+
+// Стат нужна только здесь
+Route::get('/send-mail-request-service', [MailController::class, 'serviceRequestMail']);
+Route::get('/send-mail-request-answer-service', [MailController::class, 'serviceRequestMail']);
+
+Route::get('/send-mail-tech', [MailController::class, 'techMail']);
+Route::get('/send-mail-tech-answer', [MailController::class, 'techAnswerMail']);
 
 
 // Statistics

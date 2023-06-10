@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
   
-class InstitutionMessageMail extends Mailable
+class TechMail extends Mailable
 {
     use Queueable, SerializesModels;
   
@@ -29,7 +29,7 @@ class InstitutionMessageMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Спортуслуги | Сообщение от пользователя',
+            subject: 'Спортуслуги | Ответ от техподдержки',
         );
     }
   
@@ -39,7 +39,7 @@ class InstitutionMessageMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.institutionMessageMail',
+            view: 'emails.techMail',
         );
     }
   
