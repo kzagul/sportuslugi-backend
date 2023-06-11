@@ -6,7 +6,7 @@
 <body>
 
     <div class="">
-        <img src="{{url('/images/sport_logo.svg')}}" alt="">
+        <img src="{{url('/images/sport_logo.svg')}}"  style="width: 200px;" alt="">
 
         <h1>{{ $mailData['title'] }}</h1>
         <p>{{ $mailData['body'] }}</p>

@@ -29,7 +29,7 @@ class TechAnswerMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Спортуслуги | Поддержка',
+            subject: 'Спортуслуги | Ответ от техподдержки',
         );
     }
   

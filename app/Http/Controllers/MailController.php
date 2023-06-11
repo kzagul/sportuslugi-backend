@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 use Mail;
 use App\Mail\DemoMail;
 use App\Mail\ModeratorVerificationMail;
+use App\Mail\ModeratorVerificationWaitMail;
+use App\Mail\InstitutionMessageMail;
+use App\Mail\serviceRequestMail;
+
+use App\Mail\TechMail;
+use App\Mail\techAnswerMail;
+
 use Illuminate\Routing\Controller as BaseController;
   
 class MailController extends BaseController
@@ -41,18 +48,18 @@ class MailController extends BaseController
     public function moderatorVerificationWaitMail(Request $request)
     {
         if($request){
-            $title = $request->title;
-            $body = $request->body;
-            $email = $request->email;
+            $email = $request->userEmail;
+            $userName = $request->userName;
+            $institutionName = $request->institutionName;
         }
 
         $mailData = [
-            'title' => $title,
-            'body' => $body,
-            'email' => $email
+            'email' => $email,
+            'userName' => $userName,
+            'institutionName' => $institutionName
         ];
 
-        Mail::to($email)->send(new ModeratorVerificationMail($mailData));
+        Mail::to($email)->send(new ModeratorVerificationWaitMail($mailData));
 
         return response()->json([
             'status' => 200,
@@ -84,7 +91,25 @@ class MailController extends BaseController
     }
 
     // Отправка сообщения в учреждение
-    public function institutionMessageMail() {
+    public function institutionMessageMail(Request $request) 
+    {
+
+        if($request){
+            $topic = $request->topic;
+            $phone = $request->phone;
+            $body = $request->body;
+            $email = $request->email;
+        }
+
+        $mailData = [
+            'topic' => $topic,
+            'phone' => $phone,
+            'body' => $body,
+            'email' => $email
+        ];
+
+        Mail::to($email)->send(new InstitutionMessageMail($mailData));
+
         return response()->json([
             'status' => 200,
             'result' => 'Email is sent successfully.'
@@ -100,7 +125,36 @@ class MailController extends BaseController
     }
 
     // Отправка заявки на услугу
-    public function serviceRequestMail() {
+    public function serviceRequestMail(Request $request) {
+
+        if($request){
+            $name = $request->name;
+            $gender = $request->gender;
+            $age = $request->age;
+            $title = $request->title;
+            $phone = $request->phone;
+            $emailUser = $request->emailUser;
+            $emailInstitution = $request->emailInstitution;
+            $serviceName = $request->serviceName;
+            $serviceLink = $request->serviceLink;
+            $body = $request->body;
+        }
+
+        $mailData = [
+            'name' => $name,
+            'gender' => $gender,
+            'age' => $age,
+            'title' => $title,
+            'phone' => $phone,
+            'emailUser' => $emailUser,
+            'emailInstitution' => $emailInstitution,
+            'serviceName' => $serviceName,
+            'serviceLink' => $serviceLink,
+            'body' => $body,
+        ];
+
+        // Mail::to($email)->send(new serviceRequestMail($mailData));
+        Mail::to($emailInstitution)->send(new serviceRequestMail($mailData));
         return response()->json([
             'status' => 200,
             'result' => 'Email is sent successfully.'
@@ -130,7 +184,9 @@ class MailController extends BaseController
             'email' => $email
         ];
 
-        Mail::to($email)->send(new DemoMail($mailData));
+        // sportuslugi.tech@ya.ru
+        Mail::to('sportuslugi.tech@ya.ru')->send(new TechMail($mailData));
+        // Mail::to($email)->send(new TechMail($mailData));
            
         return response()->json([
             'status' => 200,
@@ -153,7 +209,7 @@ class MailController extends BaseController
             'email' => $email
         ];
 
-        Mail::to($email)->send(new DemoMail($mailData));
+        Mail::to($email)->send(new techAnswerMail($mailData));
            
         return response()->json([
             'status' => 200,
