@@ -8,6 +8,7 @@ use App\Http\Controllers\SportController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\FormServiceController;
 use App\Models\Service;
 use Illuminate\Support\Facades\Route;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -107,3 +108,8 @@ Route::get('/send-mail-tech-answer', [MailController::class, 'techAnswerMail']);
 Route::get('/api/institution/visits/{institution_id}', [VisitController::class, 'institutionCountVisits']);
 Route::get('/api/service/visits/{service_is}', [VisitController::class, 'serviceCountVisits']);
 
+
+// Forms
+Route::get('/api/form-services', [FormServiceController::class, 'get']);
+Route::get('/api/form-services/{user_id}', [FormServiceController::class, 'getByUserId']);
+Route::post('/api/form-service-new', [FormServiceController::class, 'post']);
