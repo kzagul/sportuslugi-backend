@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('literal')->unique()->nullable();
+            // $table->string('literal')->unique()->nullable();
             $table->string('type')->nullable();
             // 
             $table->string('description')->nullable();
@@ -23,6 +23,25 @@ return new class extends Migration
             $table->boolean('isFree')->nullable();
             $table->string('price')->nullable();
             $table->string('difficulty')->nullable();
+
+            // Добавить ""для кого?""
+            
+
+            // Филиалы
+            // Адрес
+            // Объект
+            // Тренера
+            // 
+
+            // Сезонность услуги
+            // 
+
+            // Расписание - наверное внешняя таблица
+
+            // 
+
+            // Для кого - для детей / взрослых / пожилых
+
             //
             $table->timestamps();
         });

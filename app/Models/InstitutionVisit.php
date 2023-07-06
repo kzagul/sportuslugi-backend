@@ -10,4 +10,10 @@ class InstitutionVisit extends Model
     use HasFactory;
 
     protected $guarded = [];  
+
+    protected $fillable = [
+        'user_id',
+        'institution_id',
+        'visited_at',
+    ];
 }

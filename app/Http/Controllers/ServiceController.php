@@ -128,8 +128,18 @@ class ServiceController extends BaseController
 
         if($service){
             $service->update([
-                'name' => $request->name
+                'name' => $request->name,
+                'isFree' => $request->isFree,
+                'price' => $request->price,
+                'description' => $request->description,
+                'duration' => $request->duration,
             ]);
+            if($request->sports) {
+                $sports_request = $request->sports;
+                $sports = Sport::findMany($sports_request);
+                $service->sports()->attach($sports);
+            }
+
             return response()->json([
                 'status' => 200,
                 'message' => 'service updated',

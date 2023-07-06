@@ -14,15 +14,21 @@ return new class extends Migration
         Schema::create('institutions', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('literal')->unique()->nullable();
             $table->string('inn')->unique()->nullable();
             $table->string('email')->unique()->nullable();
-            $table->string('contactuser')->unique()->nullable();
+            // $table->string('contactuser')->unique()->nullable();
+
+            $table->boolean('state')->nullable(); //Государственная или нет
+
+            // TODO
+            // $table->boolean('city')->nullable(); 
+            
             // 
             $table->string('description')->nullable();
             $table->string('phone')->nullable();
             $table->string('website')->nullable();
-            $table->string('workingTime')->nullable();
+            $table->string('workingTimeStart')->nullable();
+            $table->string('workingTimeEnd')->nullable();
             // 
             $table->string('address')->nullable();
             $table->string('coordinates')->nullable();

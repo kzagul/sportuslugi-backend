@@ -14,6 +14,7 @@ class FormService extends Model
     protected $fillable = [
         'user_id',
         'service_id',
+        'institution_id',
         'title',
         'content',
         'sent_at',

@@ -96,7 +96,6 @@ Route::get('/send-mail-moderator-verification', [MailController::class, 'moderat
 Route::get('/send-mail-message-institution', [MailController::class, 'institutionMessageMail']);
 Route::get('/send-mail-message-answer-institution', [MailController::class, 'institutionMessageMail']);
 
-// Стат нужна только здесь
 Route::get('/send-mail-request-service', [MailController::class, 'serviceRequestMail']);
 Route::get('/send-mail-request-answer-service', [MailController::class, 'serviceRequestMail']);
 
@@ -105,11 +104,21 @@ Route::get('/send-mail-tech-answer', [MailController::class, 'techAnswerMail']);
 
 
 // Statistics
-Route::get('/api/institution/visits/{institution_id}', [VisitController::class, 'institutionCountVisits']);
-Route::get('/api/service/visits/{service_is}', [VisitController::class, 'serviceCountVisits']);
+Route::get('/api/institution/visits/all', [VisitController::class, 'institutionsAllVisits']);
+Route::get('/api/institution/visits/{institution_id}', [VisitController::class, 'institutionVisits']);
+Route::get('/api/institution/visits-count/{institution_id}', [VisitController::class, 'institutionCountVisits']);
+// Add
+Route::get('/api/institutions-all/visits-count', [VisitController::class, 'institutionsAllCountVisits']);
+Route::post('/api/institution/new-visit', [VisitController::class, 'institutionAddVisit']);
+
+Route::get('/api/service/visits/all', [VisitController::class, 'servicesAllVisits']);
+Route::get('/api/service/visits/{service_is}', [VisitController::class, 'serviceVisits']);
+Route::get('/api/service/visits-count/{service_is}', [VisitController::class, 'serviceCountVisits']);
+Route::post('/api/service/new-visit', [VisitController::class, 'serviceAddVisit']);
 
 
 // Forms
 Route::get('/api/form-services', [FormServiceController::class, 'get']);
 Route::get('/api/form-services/{user_id}', [FormServiceController::class, 'getByUserId']);
+Route::get('/api/form-institution-services/{institution_id}', [FormServiceController::class, 'getByInstitutionId']);
 Route::post('/api/form-service-new', [FormServiceController::class, 'post']);

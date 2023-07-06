@@ -48,6 +48,18 @@ class FormServiceController extends BaseController
          ], 200);
     }
 
+    
+    public function getByInstitutionId($institution_id): JsonResponse {
+        $formServices = FormService::where('institution_id', $institution_id)->get();;
+            // ::with('services')
+            // ->with('institutions')
+            // ->get();
+         return response()->json([
+            'status' => 200,
+            'form_services' => $formServices
+         ], 200);
+    }
+
     public function post(Request $request): JsonResponse {
         $formService = FormService::create([
             'user_id' => $request->user_id,
