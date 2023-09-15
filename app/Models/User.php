@@ -21,6 +21,15 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_moderator',
+        'verified_moderator',
+        'moderator_of',
+        'image',
+        'last_name',
+        'father_name',
+        'gender',
+        'last_name',
+        'birth_date'
     ];
 
     /**
@@ -41,4 +50,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function roles() {
+        return $this->belongsToMany(Role::class);
+        // return $this->hasMany(Role::class);
+    }
+
+    public function favoriteServices() {
+        return $this->belongsToMany(Service::class);
+    }
+
+    public function contactUserOf() {
+        return $this->belongsToMany(Institution::class);
+    }
 }

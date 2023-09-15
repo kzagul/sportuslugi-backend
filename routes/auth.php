@@ -12,6 +12,14 @@ Route::post('/register', [RegisteredUserController::class, 'store'])
                 ->middleware('guest')
                 ->name('register');
 
+Route::post('/register-new-user', [RegisteredUserController::class, 'newUser'])
+                // ->middleware('guest')
+                ->name('register');
+
+Route::post('/register-new-organization', [RegisteredUserController::class, 'newOrganization'])
+                ->middleware('guest')
+                ->name('register');
+
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])
                 ->middleware('guest')
                 ->name('login');
@@ -19,7 +27,8 @@ Route::post('/login', [AuthenticatedSessionController::class, 'store'])
 Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
                 ->middleware('guest')
                 ->name('password.email');
-
+                // ->name('forgot-password');
+                
 Route::post('/reset-password', [NewPasswordController::class, 'store'])
                 ->middleware('guest')
                 ->name('password.store');
